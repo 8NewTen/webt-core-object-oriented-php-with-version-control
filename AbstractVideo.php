@@ -1,11 +1,18 @@
 <?php
 /* User Story 6 */
 
-/*Das hiet ist eine abstrakte PHP-Klasse "AbstractVideo",
+/*Das hier ist eine abstrakte PHP-Klasse "AbstractVideo",
 die das zuvor erstellte "VideoInterface" implementiert
 abstract" = dass diese Klasse nicht direkt instanziiert
 werden kann, sondern als Vorlage für andere konkrete
-Klassen dient, die von ihr erben müssen.*/
+Klassen dient, die von ihr vererben.*/
+
+/*Unterschied zwischen protected private und public
+variablen = protected-Elemente sind vor Zugriffen von außen
+geschützt, können aber von abgeleiteten Klassen verwendet werden.
+Die public-Elemente schließlich bilden die für alle sichtbaren Teile
+einer Klassendefinition und können daher als ihre Schnittstelle
+angesehen werden.*/
 
 require_once "./VideoInterface.php";
 abstract class AbstractVideo implements VideoInterface
@@ -14,15 +21,14 @@ abstract class AbstractVideo implements VideoInterface
     (speichern die Informationen) */
     protected $title;
     protected $source;
-    protected $embedCode;
+    /*protected $embedCode;*/
 
     /*Konstruktor der Klasse wird definiert
     Er initialisiert die entsprechenden Eigenschaften mit den übergebenen Werten.*/
-    public function __construct($title, $source, $embedCode)
+    public function __construct($title, $source)
     {
         $this->title = $title;
         $this->source = $source;
-        $this->embedCode = $embedCode;
     }
 
     /*hier ein paar Methoden
@@ -38,8 +44,8 @@ abstract class AbstractVideo implements VideoInterface
         return $this->source;
     }
 
-    public function getEmbedCode(): string
+    /*public function getEmbedCode(): string
     {
         return $this->embedCode;
-    }
+    }*/
 }
